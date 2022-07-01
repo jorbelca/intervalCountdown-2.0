@@ -6,19 +6,19 @@ import Timer from "./Timer"
 
 function App() {
   const [name, setName] = useState("")
-  const [ejercicio, setEjercicio] = useState(20)
-  const [descanso, setDescanso] = useState(10)
-  const [rondas, setRondas] = useState(1)
+  const [exercise, setExercise] = useState(20)
+  const [rest, setRest] = useState(10)
+  const [rounds, setRounds] = useState(1)
   const [work, setWork] = useState([])
   const [timer, activateTimer] = useState(false)
 
-  function valuetext(ejercicio) {
-    return `${ejercicio} segundos`
+  function valuetext(exercise) {
+    return `${exercise} segundos`
   }
 
-  function formatDuration(ejercicio) {
-    const minute = Math.floor(ejercicio / 60)
-    const secondLeft = ejercicio - minute * 60
+  function formatDuration(exercise) {
+    const minute = Math.floor(exercise / 60)
+    const secondLeft = exercise - minute * 60
     return `${minute}:${secondLeft < 9 ? `0${secondLeft}` : secondLeft}`
   }
 
@@ -37,9 +37,9 @@ function App() {
       {
         id: Number(id),
         name: name,
-        ejercicio: ejercicio,
-        descanso: descanso,
-        rondas: rondas,
+        exercise: exercise,
+        rest: rest,
+        rounds: rounds,
       },
     ])
     setName("")
@@ -75,31 +75,31 @@ function App() {
             </Box>
             <br />
             <Box sx={{ flewgrow: 1, ml: 1, mr: 1, mt: 1, mb: 1 }}>
-              <label>WORK {formatDuration(ejercicio)}</label>
+              <label>WORK {formatDuration(exercise)}</label>
               <Slider
                 defaultValue={20}
                 step={5}
                 max={300}
-                onChange={(_, value) => setEjercicio(value)}
+                onChange={(_, value) => setExercise(value)}
                 placeholder="segundos"
                 color="error"
               />
             </Box>
 
             <Box sx={{ flewgrow: 1, ml: 1, mr: 1, mt: 1, mb: 1 }}>
-              <label>REST {formatDuration(descanso)}</label>
+              <label>REST {formatDuration(rest)}</label>
               <Slider
                 defaultValue={10}
                 step={5}
                 max={200}
-                onChange={(_, value) => setDescanso(value)}
+                onChange={(_, value) => setRest(value)}
                 placeholder="segundos"
                 color="success"
               />
             </Box>
 
             <Box sx={{ flewgrow: 1, ml: 5, mr: 5, mt: 2, mb: 2 }}>
-              <label>ROUNDS {rondas}</label>
+              <label>ROUNDS {rounds}</label>
               <Slider
                 aria-label="Always visible"
                 defaultValue={1}
@@ -107,8 +107,8 @@ function App() {
                 step={1}
                 max={10}
                 valueLabelDisplay="auto"
-                onChange={(_, value) => setRondas(value)}
-                value={rondas}
+                onChange={(_, value) => setRounds(value)}
+                value={rounds}
                 placeholder="segundos"
                 color="secondary"
               />
@@ -130,7 +130,7 @@ function App() {
           {work.map((workout) => (
             <>
               <Box
-                key={workout.ejercicio + workout.descanso + workout.id}
+                key={workout.exercise + workout.rest + workout.id}
                 sx={{
                   flewgrow: 1,
                   ml: 5,
@@ -153,12 +153,12 @@ function App() {
                       {workout.name === "" ? workout.id + "." : workout.name}
                     </span>
                     <span style={{ color: "red" }}>
-                      {formatDuration(workout.ejercicio)}
+                      {formatDuration(workout.exercise)}
                     </span>
                     <span style={{ color: "green" }}>
-                      {formatDuration(workout.descanso)}
+                      {formatDuration(workout.rest)}
                     </span>
-                    <span style={{ color: "purple" }}>{workout.rondas}</span>
+                    <span style={{ color: "purple" }}>{workout.rounds}</span>
                   </>
                   <Button
                     onClick={() => deleteWorkout(workout.id)}

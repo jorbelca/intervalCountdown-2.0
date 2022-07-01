@@ -26,56 +26,40 @@
 
 
 /* TIMER */
+.timer-name{
+  display: flex;
+  justify-content: center;
+}
 .countdown {
   display: grid;
-  margin: 1em auto;
+  margin: 0.1em auto;
   width: 75vmin;
-  height: 75vmin;
+  height: 25vmin;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
 }
-.countdown__svg {
-  transform: scaleX(-1);
-}
 
-.countdown__circle {
-  fill: none;
-  stroke: none;
-}
-
-.countdown__path-elapsed {
-  stroke-width: 7px;
-  stroke: grey;
-
-}
-
-.countdown__path-remaining {
-  stroke-width: 7px;
-  stroke-linecap: round;
-  transform: rotate(90deg);
-  transform-origin: center;
-  transition: 1s linear all;
-  fill-rule: nonzero;
-  stroke: currentColor;
-}
-
-.countdown__path-remaining.green {
-  color: rgb(65, 184, 131);
-}
-
-.countdown__path-remaining.orange {
-  color: orange;
-}
-
-.countdown__path-remaining.red {
-  color: red;
-}
 
 .countdown__label {
   width: 75vmin;
-  height: 75vmin;
+  height: 30vmin;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 48px;
+}
+.tiles-timer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.titles-timer{
+  width: 5vmin;
+  height:5vmin;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
