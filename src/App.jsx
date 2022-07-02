@@ -16,12 +16,6 @@ function App() {
     return `${exercise} segundos`
   }
 
-  function formatDuration(exercise) {
-    const minute = Math.floor(exercise / 60)
-    const secondLeft = exercise - minute * 60
-    return `${minute}:${secondLeft < 9 ? `0${secondLeft}` : secondLeft}`
-  }
-
   const submitForm = (e) => {
     e.preventDefault()
 
@@ -62,11 +56,11 @@ function App() {
       <form onSubmit={submitForm}>
         <div className="form-layout">
           <div className="inputs">
-            <Box sx={{ width: 400 }}>
+            <Box>
               <label>EXERCISE NAME &nbsp;</label>
               <Input
                 onChange={(e) => {
-                  setName(e.target.value)
+                  setName(e.target.value.toLocaleUpperCase())
                 }}
                 value={name}
                 type="text"
@@ -74,7 +68,7 @@ function App() {
               ></Input>
             </Box>
             <br />
-            <Box sx={{ flewgrow: 1, ml: 1, mr: 1, mt: 1, mb: 1 }}>
+            <Box sx={{ flewgrow: 1, ml: 3, mr: 3, mt: 1, mb: 1 }}>
               <label>WORK {formatDuration(exercise)}</label>
               <Slider
                 defaultValue={20}
@@ -86,7 +80,7 @@ function App() {
               />
             </Box>
 
-            <Box sx={{ flewgrow: 1, ml: 1, mr: 1, mt: 1, mb: 1 }}>
+            <Box sx={{ flewgrow: 1, ml: 3, mr: 3, mt: 1, mb: 1 }}>
               <label>REST {formatDuration(rest)}</label>
               <Slider
                 defaultValue={10}
@@ -106,6 +100,7 @@ function App() {
                 getAriaValueText={valuetext}
                 step={1}
                 max={10}
+                min={1}
                 valueLabelDisplay="auto"
                 onChange={(_, value) => setRounds(value)}
                 value={rounds}
@@ -191,3 +186,9 @@ function App() {
 }
 
 export default App
+
+export function formatDuration(exercise) {
+  const minute = Math.floor(exercise / 60)
+  const secondLeft = exercise - minute * 60
+  return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`
+}

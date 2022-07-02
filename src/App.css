@@ -9,6 +9,7 @@
 }
 .inputs{
   margin: 10px;
+  
 }
 .inner-tab{
   display: flex;
@@ -17,11 +18,6 @@
   align-items: center;
   padding: 10px;
   color: white;
-  /* margin: 0px 10px 0px 10px; */
-
-}
-#timer{
-/* visibility: hidden; */
 }
 
 
@@ -30,15 +26,20 @@
   display: flex;
   justify-content: center;
 }
+.timer-name:first-child{
+  color:green;
+  font-size: 20px;
+  text-decoration: underline;
+}
 .countdown {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0.1em auto;
   width: 75vmin;
   height: 25vmin;
   font: 5em/2 ubuntu mono, consolas, monaco, monospace;
 }
-
-
 .countdown__label {
   width: 75vmin;
   height: 30vmin;
@@ -53,13 +54,28 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-.titles-timer{
-  width: 5vmin;
-  height:5vmin;
+  width: 55vmin;
+  height:25vmin;
   top: 0;
+  font-size: 12px;
+}
+
+.btns-timer{
   display: flex;
+  justify-content: center;
+  margin-top: 10vmin;
+}
+
+.finish{
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font: 15vmin ubuntu mono, consolas, monaco, monospace;
+  background-color: red;
+  color: white;
 }
