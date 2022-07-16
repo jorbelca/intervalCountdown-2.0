@@ -48,7 +48,7 @@ function Timer({ data, modal }) {
     }
   }, [exercise, rest])
 
-  console.log(allData[0])
+
 
   const stopTimer = () => {
     setExercise(0)
