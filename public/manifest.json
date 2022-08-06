@@ -41,5 +41,5 @@
   "background_color": "#FFF",
   "orientation":"portrait-primary",
   "lang": "en-US",
-  "prefer_related_applications": "false"
+  "prefer_related_applications": false
 }
