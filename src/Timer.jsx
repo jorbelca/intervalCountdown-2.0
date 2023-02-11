@@ -11,6 +11,8 @@ function Timer({ data, modal }) {
 
   const [allData] = useState(data)
 
+  console.log(data, allData)
+
   useEffect(() => {
     if (allData !== undefined) {
       setExercise(allData[0].exercise)
@@ -47,8 +49,6 @@ function Timer({ data, modal }) {
       }
     }
   }, [exercise, rest])
-
-
 
   const stopTimer = () => {
     setExercise(0)
@@ -120,19 +120,6 @@ function Timer({ data, modal }) {
                   )}
                 </span>
               </div>
-              {/* <div className="btns-timer">
-              <IconButton aria-label="play" color="success" size="large">
-                <PlayCircleFilledIcon />
-              </IconButton>
-              <IconButton
-                aria-label="stop"
-                color="error"
-                size="large"
-                onClick={stopTimer}
-              >
-                <PauseIcon />
-              </IconButton>
-            </div> */}
             </div>
           </div>
         )}
@@ -142,47 +129,3 @@ function Timer({ data, modal }) {
 }
 
 export default Timer
-
-// let timerInterval = null
-
-// function onTimesUp() {
-//   clearInterval(timerInterval)
-// }
-
-// let TIME_LIMIT
-// if (allData.length === workoutNum) TIME_LIMIT = 0
-// TIME_LIMIT = allData[workoutNum].exercise
-// let timePassed = 0
-// let timeLeft = TIME_LIMIT
-
-// startTimer()
-
-// function startTimer() {
-//   timerInterval = setInterval(() => {
-//     timePassed = timePassed += 1
-//     timeLeft = TIME_LIMIT - timePassed
-//     if (rounds === 0) {
-//       onTimesUp()
-//     }
-//   }, 1000)
-// }
-
-// useEffect(() => {
-//   if (rest >= 0) {
-//     minusExercise()
-//   }
-//   if (exercise <= 0) {
-//     minusRest()
-//   }
-//   if (exercise === 0 && rest === 0 && rounds > 1) {
-//     setExercise(allData[workoutNum].exercise)
-//     setRest(allData[workoutNum].rest)
-//     setRounds(rounds - 1)
-//   }
-
-//   if (exercise === 0 && rest === 0 && rounds === 1) {
-//     setRounds(rounds - 1)
-
-//     if (allData.length > 1) setWorkoutNum(workoutNum + 1)
-//   }
-// }, [exercise, rest])
