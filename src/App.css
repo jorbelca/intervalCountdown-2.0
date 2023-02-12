@@ -57,7 +57,7 @@
   width: 55vmin;
   height:35vmin;
   top: 5vh;
-  font-size: 28px;
+ font-size: clamp(1rem, 0.5rem + 2.5vw, 3rem);
 }
 
 .btns-timer{
