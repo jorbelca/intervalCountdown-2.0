@@ -2,16 +2,19 @@ import { Dialog, IconButton } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import CloseIcon from "@mui/icons-material/Close"
 import { formatDuration } from "./App"
+import Sound from "./assets/mixkit-simple-game-countdown-921.wav"
+import { useRef } from "react"
 
 function Timer({ data, modal }) {
   const [modalVisible, setModalVisible] = useState(modal)
   let [exercise, setExercise] = useState(0)
   let [rest, setRest] = useState(0)
   let [rounds, setRounds] = useState(0)
+  let [isResting, setIsResting] = useState(false)
 
   const [allData] = useState(data)
 
-  console.log(data, allData)
+  let audio = new Audio(Sound)
 
   useEffect(() => {
     if (allData !== undefined) {
@@ -27,12 +30,22 @@ function Timer({ data, modal }) {
   const minusRest = () => rest > 0 && setTimeout(() => setRest(rest - 1), 1000)
 
   useEffect(() => {
+    if (rest === 3 && rest > 0 && modalVisible) {
+      audio.play()
+    }
+    if (exercise === 3 && exercise > 0 && modalVisible) {
+      audio.play()
+    }
+
     if (rest >= 0) {
       minusExercise()
     }
     if (exercise <= 0) {
       minusRest()
     }
+    if (exercise === 0) setIsResting(true)
+    if (rest === 0) setIsResting(false)
+
     if (exercise === 0 && rest === 0 && rounds > 1) {
       setExercise(allData[0].exercise)
       setRest(allData[0].rest)
@@ -54,7 +67,8 @@ function Timer({ data, modal }) {
     setExercise(0)
     setRest(0)
     setRounds(0)
-    allData = null
+    data = []
+    audio = new Audio()
   }
 
   return (
@@ -72,7 +86,7 @@ function Timer({ data, modal }) {
           onClick={() => setModalVisible(false)}
           aria-label="close"
         >
-          <CloseIcon />
+          <CloseIcon sx={{ fontSize: "60px" }} />
         </IconButton>
 
         {allData.length === 0 ? (
@@ -85,18 +99,26 @@ function Timer({ data, modal }) {
               </h5>
             ))}
             <div id="countdown" className="countdown">
-              <div className="tiles-timer">
+              <div
+                className={
+                  !isResting ? "tiles-timer work active" : "tiles-timer work"
+                }
+              >
                 <p className="titles-timer">WORK</p>
-                <span id="countdown-label" className="countdown__label">
+                <p id="countdown-label " className="tiles-timer">
                   {formatDuration(exercise)}
-                </span>
+                </p>
               </div>
 
-              <div className="tiles-timer">
+              <div
+                className={
+                  isResting ? "tiles-timer rest active" : "tiles-timer rest"
+                }
+              >
                 <p className="titles-timer">REST</p>
-                <span id="countdown-label" className="countdown__label">
+                <p id="countdown-label " className="tiles-timer">
                   {formatDuration(rest)}
-                </span>
+                </p>
               </div>
 
               <div className="tiles-timer">

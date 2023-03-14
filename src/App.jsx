@@ -1,5 +1,5 @@
 import "./App.css"
-import React, { useState } from "react"
+import React, { useId, useState } from "react"
 import { Box, Slider, Button, Input } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import Timer from "./Timer"
@@ -13,7 +13,7 @@ function App() {
   const [timer, activateTimer] = useState(false)
 
   function valuetext(exercise) {
-    return `${exercise} segundos`
+    return `${exercise} seconds`
   }
 
   const submitForm = (e) => {
@@ -71,8 +71,10 @@ function App() {
             <Box sx={{ flewgrow: 1, ml: 3, mr: 3, mt: 1, mb: 1 }}>
               <label>WORK {formatDuration(exercise)}</label>
               <Slider
+                key={useId()}
                 defaultValue={20}
                 step={5}
+                min={5}
                 max={300}
                 onChange={(_, value) => setExercise(value)}
                 placeholder="segundos"
@@ -83,8 +85,10 @@ function App() {
             <Box sx={{ flewgrow: 1, ml: 3, mr: 3, mt: 1, mb: 1 }}>
               <label>REST {formatDuration(rest)}</label>
               <Slider
+                key={useId()}
                 defaultValue={10}
                 step={5}
+                min={5}
                 max={200}
                 onChange={(_, value) => setRest(value)}
                 placeholder="segundos"
@@ -95,6 +99,7 @@ function App() {
             <Box sx={{ flewgrow: 1, ml: 5, mr: 5, mt: 2, mb: 2 }}>
               <label>ROUNDS {rounds}</label>
               <Slider
+                key={useId()}
                 aria-label="Always visible"
                 defaultValue={1}
                 getAriaValueText={valuetext}

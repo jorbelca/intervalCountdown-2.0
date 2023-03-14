@@ -2,16 +2,15 @@
   text-align: center;
 }
 
-.form-layout{
+.form-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.inputs{
+.inputs {
   margin: 10px;
-  
 }
-.inner-tab{
+.inner-tab {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,53 +19,41 @@
   color: white;
 }
 
-
 /* TIMER */
-.timer-name{
+.timer-name {
   display: flex;
   justify-content: center;
 }
-.timer-name:first-child{
-  color:green;
+.timer-name:first-child {
+  color: green;
   font-size: 20px;
   text-decoration: underline;
 }
-.countdown {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0.1em auto;
-  width: 75vmin;
-  height: 25vmin;
-  font: 5em/2 ubuntu mono, consolas, monaco, monospace;
+.tiles-timer.active p {
+  color: green !important;
+  font-size: 50px !important;
+  font-weight: bold;
+  padding: 10px;
 }
-.countdown__label {
-  width: 75vmin;
-  height: 30vmin;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-}
-.tiles-timer{
+.tiles-timer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 55vmin;
-  height:35vmin;
+  min-width: 40vmin;
+  min-height: 20vmin;
   top: 5vh;
- font-size: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+  font-size: 30px;
+  color: grey;
 }
 
-.btns-timer{
+.btns-timer {
   display: flex;
   justify-content: center;
   margin-top: 10vmin;
 }
 
-.finish{
+.finish {
   display: flex;
   flex-direction: column;
   align-content: center;
